@@ -35,10 +35,11 @@ function App() {
         handleScrollToSection={handleScrollToSection}
       />
       <section ref={heroRef}>
-        <Hero ref={heroRef} />
+        <Hero />
       </section>
+      
       <section ref={aboutRef}>
-        <About ref={aboutRef} />
+        <About />
       </section>
       <section ref={skillsRef}>
         <Skills />

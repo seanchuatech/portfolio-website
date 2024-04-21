@@ -11,7 +11,15 @@ const About = () => {
                 <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">This website is a testament to my dedication and a platform to showcase my progress. I'm excited to share my journey with you and see what the future holds in the exciting world of web development!</p>
             </div>
             <div>
-                <iframe className="mx-auto w-full lg:max-w-xl h-64 rounded-lg sm:h-96 shadow-xl" src="https://www.youtube.com/embed/KaLxCiilHns" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe
+                  src="https://giphy.com/embed/qgQUggAC3Pfv687qPC"
+                  className="https://giphy.com/embed/qgQUggAC3Pfv687qPC"
+                  width={480}
+                  height={360}
+                  frameBorder={0}
+                  className="giphy-embed"
+                  allowFullScreen=""
+                />
             </div>
         </div>
     </section>
