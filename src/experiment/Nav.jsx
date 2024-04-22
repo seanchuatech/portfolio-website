@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ThemeSwitcher from '../ThemeSwitcher'
 
-const Header = ({ heroRef, aboutRef, skillsRef, contactRef, projectRef, handleScrollToSection }) => {
+const Nav = ({ heroRef, aboutRef, skillsRef, contactRef, projectRef, handleScrollToSection }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile menu visibility
 
   const handleClick = (ref) => {
@@ -14,6 +14,7 @@ const Header = ({ heroRef, aboutRef, skillsRef, contactRef, projectRef, handleSc
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen); // Toggle state on button click
+    console.log("Is this working?", isMobileMenuOpen);
   };
 
   return (
@@ -45,10 +46,9 @@ const Header = ({ heroRef, aboutRef, skillsRef, contactRef, projectRef, handleSc
               </svg>
           </button>
         </div>
-        {/* <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky"> */}
         <div
-          className={`items-center justify-between  w-full md:flex md:w-auto md:order-1 ${ // Conditional classes
-            isMobileMenuOpen ? '' : 'hidden'
+          className={`items-center justify-between hidden w-full md:flex md:w-auto md:order-1 ${ // Conditional classes
+            isMobileMenuOpen ? 'block' : ''
           }`}
           id="navbar-sticky"
         >
@@ -75,4 +75,4 @@ const Header = ({ heroRef, aboutRef, skillsRef, contactRef, projectRef, handleSc
   )
 }
 
-export default Header
+export default Nav
