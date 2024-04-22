@@ -6,7 +6,6 @@ import Skills from './components/Skills'
 import Footer from './components/Footer '
 import Contact from './components/Contact'
 import Project from './components/Project'
-import Nav from './experiment/Nav'
 
 function App() {
   const heroRef = useRef(null);
@@ -27,7 +26,6 @@ function App() {
 
   return (
     <>
-      {/* <Nav /> */}
       <Header 
         heroRef={heroRef}
         aboutRef={aboutRef}
