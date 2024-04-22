@@ -10,43 +10,43 @@ const Skills = () => {
                 <div className="grid grid-cols-5 gap-8">
                     <div className="flex flex-col justify-center items-center">
                         <FaHtml5 className="text-5xl dark:text-white" />
-                        <p className="dark:text-white">HTML</p>
+                        <p className="dark:text-white text-sm">HTML</p>
                     </div>
                     <div className="flex flex-col justify-center items-center">
                         <FaCss3Alt className="text-5xl dark:text-white" />
-                        <p className="dark:text-white">CSS</p>
+                        <p className="dark:text-white text-sm">CSS</p>
                     </div>
                     <div className="flex flex-col justify-center items-center">
                         <SiJavascript className="text-5xl dark:text-white" />
-                        <p className="dark:text-white">JavaScript</p>
+                        <p className="dark:text-white text-sm">JavaScript</p>
                     </div>
                     <div className="flex flex-col justify-center items-center">
                         <FaReact className="text-5xl dark:text-white" />
-                        <p className="dark:text-white">ReactJS</p>
+                        <p className="dark:text-white text-sm">ReactJS</p>
                     </div>
                     <div className="flex flex-col justify-center items-center">
                         <FaNodeJs className="text-5xl dark:text-white" />
-                        <p className="dark:text-white">NodeJS</p>
+                        <p className="dark:text-white text-sm">NodeJS</p>
                     </div>
                     <div className="flex flex-col justify-center items-center">
                         <SiExpress className="text-5xl dark:text-white" />
-                        <p className="dark:text-white">Express</p>
+                        <p className="dark:text-white text-sm">Express</p>
                     </div>
                     <div className="flex flex-col justify-center items-center">
                         <SiMongodb className="text-5xl dark:text-white" />
-                        <p className="dark:text-white">MongoDB</p>
+                        <p className="dark:text-white text-sm">MongoDB</p>
                     </div>
                     <div className="flex flex-col justify-center items-center">
                         <SiMongoose className="text-5xl dark:text-white" />
-                        <p className="dark:text-white">Mongoose</p>
+                        <p className="dark:text-white text-sm">Mongoose</p>
                     </div>
                     <div className="flex flex-col justify-center items-center">
                         <FaGitAlt className="text-5xl dark:text-white" />
-                        <p  className="dark:text-white">Git</p>
+                        <p  className="dark:text-white text-sm">Git</p>
                     </div>
                     <div className="flex flex-col justify-center items-center">
                         <FaWordpress className="text-5xl dark:text-white" />
-                        <p className="dark:text-white">WordPress</p>
+                        <p className="dark:text-white text-sm">WordPress</p>
                     </div>
                 </div>
             </div>
