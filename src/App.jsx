@@ -17,10 +17,7 @@ function App() {
 
   const handleScrollToSection = (ref) => {
     if (ref.current) {
-      console.log("Ref exists, scrolling to Skills");
       ref.current.scrollIntoView({ behavior: "smooth" });
-    } else {
-      console.log("Ref does not exist, cannot scroll");
     }
   };
 

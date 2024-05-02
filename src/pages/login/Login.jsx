@@ -1,9 +1,17 @@
 import { useState, useRef, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 
 import axios from '../../api/axios';
 const LOGIN_URL = '/auth';
 
 const Login = () => {
+  const { auth, setAuth } = useAuth();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const userRef = useRef();
 
   const [username, setUsername] = useState('');
@@ -25,6 +33,15 @@ const Login = () => {
         }
       );
       console.log(JSON.stringify(response?.data));
+      const accessToken = response?.data?.accessToken;
+      const userId = response?.data?.userId;
+      setAuth({ username, password, accessToken });
+      // console.log(auth);
+      setUsername('');
+      setPassword('');
+      navigate(from, { replace: true });
+      
+      // navigate("/admin")
     } catch (error) {
       console.log('Catch error', error);
     }
