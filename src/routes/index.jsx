@@ -5,6 +5,7 @@ import Users from "../pages/user-management/Users";
 import RequireAuth from "../components/RequireAuth";
 import Missing from "../components/Missing";
 import Layout from "../components/Layout";
+import PersistLogin from "../components/PersistLogin";
 
 const routes = [
   {
@@ -16,19 +17,24 @@ const routes = [
     element: <Login />
   },
   {
-    element: <RequireAuth />,
+    element: <PersistLogin />,
     children: [
       {
-        path: "/admin",
-        element: <Layout />,
+        element: <RequireAuth />,
         children: [
           {
-            path: "users",
-            element: <Users />,
-          },
-          {
-            path: "create-new-user",
-            element: <UserCreate />,
+            path: "/admin",
+            element: <Layout />,
+            children: [
+              {
+                path: "users",
+                element: <Users />,
+              },
+              {
+                path: "create-new-user",
+                element: <UserCreate />,
+              },
+            ]
           },
         ]
       },

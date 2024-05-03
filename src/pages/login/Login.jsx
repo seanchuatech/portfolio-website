@@ -6,7 +6,7 @@ import axios from '../../api/axios';
 const LOGIN_URL = '/auth';
 
 const Login = () => {
-  const { auth, setAuth } = useAuth();
+  const { setAuth, persist, setPersist } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -46,6 +46,14 @@ const Login = () => {
       console.log('Catch error', error);
     }
   }
+
+  const togglePersist = () => {
+    setPersist(prev => !prev);
+  }
+
+  useEffect(() => {
+    localStorage.setItem("persist", persist);
+  },[persist])
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
@@ -108,16 +116,18 @@ const Login = () => {
                 <div className="flex items-start">
                   <div className="flex items-center h-5">
                     <input
-                      id="remember"
+                      id="persist"
                       aria-describedby="remember"
                       type="checkbox"
                       className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-slate-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-slate-600 dark:ring-offset-gray-800"
                       required=""
+                      onChange={togglePersist}
+                      checked={persist}
                     />
                   </div>
                   <div className="ml-3 text-sm">
                     <label
-                      htmlFor="remember"
+                      htmlFor="persist"
                       className="text-gray-500 dark:text-gray-300"
                     >
                       Remember me
