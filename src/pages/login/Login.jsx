@@ -36,7 +36,6 @@ const Login = () => {
       const accessToken = response?.data?.accessToken;
       const userId = response?.data?.userId;
       setAuth({ username, password, accessToken });
-      // console.log(auth);
       setUsername('');
       setPassword('');
       navigate(from, { replace: true });
