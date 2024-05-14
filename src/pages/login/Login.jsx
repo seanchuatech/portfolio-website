@@ -1,12 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import useInput from '../../hooks/useInput';
+import useToggle from '../../hooks/useToggle';
 
 import axios from '../../api/axios';
 const LOGIN_URL = '/auth';
 
 const Login = () => {
-  const { setAuth, persist, setPersist } = useAuth();
+  const { setAuth } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -14,8 +16,10 @@ const Login = () => {
 
   const userRef = useRef();
 
-  const [username, setUsername] = useState('');
+  // const [username, setUsername] = useLocalStorage("username", "") // useState('');
+  const [username, resetUsername, usernameAttribs] = useInput('username', '');
   const [password, setPassword] = useState('');
+  const [check, toggleCheck] = useToggle('persist', false);
 
   useEffect(() => {
     userRef.current.focus();
@@ -34,9 +38,9 @@ const Login = () => {
       );
       console.log(JSON.stringify(response?.data));
       const accessToken = response?.data?.accessToken;
-      const userId = response?.data?.userId;
-      setAuth({ username, password, accessToken });
-      setUsername('');
+      setAuth({ username, accessToken });
+      // setUsername('');
+      resetUsername();
       setPassword('');
       navigate(from, { replace: true });
       
@@ -46,13 +50,13 @@ const Login = () => {
     }
   }
 
-  const togglePersist = () => {
-    setPersist(prev => !prev);
-  }
+  // const togglePersist = () => {
+  //   setPersist(prev => !prev);
+  // }
 
-  useEffect(() => {
-    localStorage.setItem("persist", persist);
-  },[persist])
+  // useEffect(() => {
+  //   localStorage.setItem("persist", persist);
+  // },[persist])
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
@@ -88,8 +92,9 @@ const Login = () => {
                   placeholder="Username"
                   autoComplete="off"
                   ref={userRef}
-                  onChange={(e) => setUsername(e.target.value)}
-                  value={username}
+                  // onChange={(e) => setUsername(e.target.value)}
+                  // value={username}
+                  {...usernameAttribs}
                   required=""
                 />
               </div>
@@ -120,8 +125,8 @@ const Login = () => {
                       type="checkbox"
                       className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-slate-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-slate-600 dark:ring-offset-gray-800"
                       required=""
-                      onChange={togglePersist}
-                      checked={persist}
+                      onChange={toggleCheck}
+                      checked={check}
                     />
                   </div>
                   <div className="ml-3 text-sm">
