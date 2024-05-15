@@ -6,6 +6,9 @@ import RequireAuth from "../components/RequireAuth";
 import Missing from "../components/Missing";
 import Layout from "../components/Layout";
 import PersistLogin from "../components/PersistLogin";
+import UserDetails from "../pages/user-management/UserDetails";
+import UserEdit from "../pages/user-management/UserEdit";
+import UserDelete from "../pages/user-management/UserDelete";
 
 const routes = [
   {
@@ -23,7 +26,7 @@ const routes = [
         element: <RequireAuth />,
         children: [
           {
-            path: "/admin",
+            path: "admin",
             element: <Layout />,
             children: [
               {
@@ -31,8 +34,20 @@ const routes = [
                 element: <Users />,
               },
               {
-                path: "create-new-user",
+                path: "users/create",
                 element: <UserCreate />,
+              },
+              {
+                path: "users/details/:id",
+                element: <UserDetails />
+              },
+              {
+                path: "users/edit/:id",
+                element: <UserEdit />
+              },
+              {
+                path: "users/delete/:id",
+                element: <UserDelete />
               },
             ]
           },
