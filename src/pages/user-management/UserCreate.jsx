@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { useNavigate } from 'react-router-dom';
 
 const CREATE_USER_URL = '/users';
 
 const UserCreate = () => {
   const axiosPrivate = useAxiosPrivate();
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
@@ -18,6 +20,7 @@ const UserCreate = () => {
         {headers: { 'Content-Type': 'application/json' }}
       );
       console.log(response.data);
+      navigate('/admin/users');
     } catch (error) {
       console.log('Catch error', error);
     }

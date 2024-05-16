@@ -9,6 +9,10 @@ import PersistLogin from "../components/PersistLogin";
 import UserDetails from "../pages/user-management/UserDetails";
 import UserEdit from "../pages/user-management/UserEdit";
 import UserDelete from "../pages/user-management/UserDelete";
+import Projects from "../pages/project/Projects";
+import ProjectCreate from "../pages/project/ProjectCreate";
+import ProjectDetails from "../pages/project/ProjectDetails";
+import ProjectDelete from "../pages/project/ProjectDelete";
 
 const routes = [
   {
@@ -48,6 +52,22 @@ const routes = [
               {
                 path: "users/delete/:id",
                 element: <UserDelete />
+              },
+              {
+                path: "projects",
+                element: <Projects />,
+              },
+              {
+                path: "projects/create",
+                element: <ProjectCreate />,
+              },
+              {
+                path: "projects/details/:id",
+                element: <ProjectDetails />
+              },
+              {
+                path: "projects/delete/:id",
+                element: <ProjectDelete />
               },
             ]
           },
