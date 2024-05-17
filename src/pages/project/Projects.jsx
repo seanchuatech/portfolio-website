@@ -60,6 +60,9 @@ const Projects = () => {
               Technology
             </th>
             <th scope="col" className="px-6 py-3">
+              Display
+            </th>
+            <th scope="col" className="px-6 py-3">
               Operations
             </th>
           </tr>
@@ -73,6 +76,7 @@ const Projects = () => {
                 <td className="px-6 py-4">{project.imageUrl}</td>
                 <td className="px-6 py-4">{project.githubUrl}</td>
                 <td className="px-6 py-4">{project.techStack}</td>
+                <td className="px-6 py-4">{project.display ? 'Yes' : 'No'}</td>
                 <td className="px-6 py-4">
                   <div className="flex gap-x-4">
                     <Link to={`/admin/projects/details/${project._id}`}>

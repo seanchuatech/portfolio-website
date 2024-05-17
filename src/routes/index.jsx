@@ -13,6 +13,7 @@ import Projects from "../pages/project/Projects";
 import ProjectCreate from "../pages/project/ProjectCreate";
 import ProjectDetails from "../pages/project/ProjectDetails";
 import ProjectDelete from "../pages/project/ProjectDelete";
+import ProjectEdit from "../pages/project/ProjectEdit";
 
 const routes = [
   {
@@ -64,6 +65,10 @@ const routes = [
               {
                 path: "projects/details/:id",
                 element: <ProjectDetails />
+              },
+              {
+                path: "projects/edit/:id",
+                element: <ProjectEdit />
               },
               {
                 path: "projects/delete/:id",

@@ -14,7 +14,7 @@ const ProjectDelete = () => {
       const response = await axiosPrivate.delete(`/projects/${id}`, {
         signal: controller.signal
       });
-      navigate(-1);
+      navigate('/admin/projects');
     } catch (error) {
       console.log('Catch error', error);
     }

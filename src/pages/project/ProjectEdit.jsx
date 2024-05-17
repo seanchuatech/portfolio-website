@@ -1,26 +1,49 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
-const ProjectCreate = () => {
+const ProjectEdit = () => {
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
+  const { id } = useParams();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [githubUrl, setGithubUrl] = useState('');
-  const [techStack, setTechstack] = useState('');
+  const [techStack, setTechStack] = useState('');
   const [display, setDisplay] = useState(false);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const getProject = async () => {
+      try {
+        const response = await axiosPrivate.get(`/projects/${id}`, {
+          signal: controller.signal
+        });
+        setTitle(response.data.title);
+        setDescription(response.data.description);
+        setImageUrl(response.data.imageUrl);
+        setGithubUrl(response.data.githubUrl);
+        setTechStack(response.data.techStack);
+        setDisplay(response.data.display);
+        console.log(display)
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    getProject();
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     try {
-      const response = await axiosPrivate.post('/projects',
+      const response = await axiosPrivate.put(`/projects/${id}`,
         JSON.stringify({ title, description, imageUrl, githubUrl, techStack, display }),
         {headers: { 'Content-Type': 'application/json' }}
       );
-      console.log(response.data);
-      navigate('/admin/projects');
+      navigate(-1);
     } catch (error) {
       console.log('Catch error', error);
     }
@@ -115,7 +138,7 @@ const ProjectCreate = () => {
           className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "
           required=""
-          onChange={(e) => setTechstack(e.target.value)}
+          onChange={(e) => setTechStack(e.target.value)}
           value={techStack}
         />
         <label
@@ -130,6 +153,7 @@ const ProjectCreate = () => {
         <input
           checked={display}
           type="checkbox"
+          defaultValue="display"
           name="display"
           id="display"
           onChange={(e) => setDisplay(e.target.checked)}
@@ -153,4 +177,4 @@ const ProjectCreate = () => {
   )
 }
 
-export default ProjectCreate;
+export default ProjectEdit;
